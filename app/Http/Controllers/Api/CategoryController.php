@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\Category;
+
+class CategoryController extends Controller
+{
+    public function index()
+    {
+        // Eloquent collection döndürüyoruz, Laravel otomatik JSON'a çeviriyor
+        return Category::all();
+    }
+}
