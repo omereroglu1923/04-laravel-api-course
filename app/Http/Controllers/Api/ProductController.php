@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category')->get(); // eager loading — N+1 önleniyor
+        $products = Product::with('category')->paginate(9); // get() yerine paginate()
         return ProductResource::collection($products);
     }
 }
