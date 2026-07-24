@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -24,5 +25,16 @@ class CategoryController extends Controller
     {
         // /lists/categories için — description hiç gösterilmez (dropdown senaryosu)
         return CategoryResource::collection(Category::all());
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $category = Category::create($data);
+
+        return new CategoryResource($category); // otomatik 201 Created döner
     }
 }
