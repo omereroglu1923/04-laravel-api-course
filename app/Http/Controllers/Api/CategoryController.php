@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategoryRequest; // yeni import
 
 class CategoryController extends Controller
 {
@@ -27,14 +28,10 @@ class CategoryController extends Controller
         return CategoryResource::collection(Category::all());
     }
 
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request) // Request yerine StoreCategoryRequest
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
+        $category = Category::create($request->validated());
 
-        $category = Category::create($data);
-
-        return new CategoryResource($category); // otomatik 201 Created döner
+        return new CategoryResource($category);
     }
 }
