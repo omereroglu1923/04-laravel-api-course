@@ -15,7 +15,7 @@ class ProductResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'price' => number_format($this->price / 100, 2), // kuruştan dolara/liraya çevir
-            'category' => CategoryResource::make($this->category), // sadece eager load edildiyse gösterilir
+            'category' => CategoryResource::make($this->whenLoaded('category')), // sadece eager load edildiyse gösterilir
         ];
     }
 }
