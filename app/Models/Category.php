@@ -11,9 +11,9 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'photo']; // photo eklendi
 
-    public function products(): HasMany // yeni eklenen ilişki
+    public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }

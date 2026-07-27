@@ -12,6 +12,7 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'photo' => $this->photo, // yeni eklenen alan
             'description' => $this->when($request->is('api/categories*'), function () use ($request) {
                 // Sadece liste görünümünde (tam olarak /api/categories) kısaltılmış göster
                 if ($request->is('api/categories')) {
