@@ -34,4 +34,23 @@ class CategoryController extends Controller
 
         return new CategoryResource($category);
     }
+
+    public function update(Category $category, StoreCategoryRequest $request)
+    {
+        $category->update($request->validated());
+
+        return new CategoryResource($category);
+    }
+
+    public function destroy(Category $category)
+    {
+        if ($category->products()->exists()) {
+            return response()->json([
+                'message' => 'Bu kategoriye bağlı ürünler var, önce onları silmeniz veya başka kategoriye taşımanız gerekiyor.'
+            ], 409); // Conflict
+        }
+
+        $category->delete();
+        return response()->noContent();
+    }
 }

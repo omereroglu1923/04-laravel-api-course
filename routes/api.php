@@ -12,7 +12,9 @@ Route::get('/user', function (Request $request) {
 Route::get('lists/categories', [CategoryController::class, 'list']);
 Route::get('categories', [CategoryController::class, 'index']);
 Route::get('categories/{category}', [CategoryController::class, 'show']);
+Route::post('/categories', [CategoryController::class, 'store']);
 
 Route::get('products', [ProductController::class, 'index']);
 
-Route::post('/categories', [CategoryController::class, 'store']); // yeni route
+Route::apiResource('categories', CategoryController::class); // 5 route'u tek satırda oluşturuyor
+Route::get('products', [ProductController::class, 'index']);
