@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreCategoryRequest; // yeni import
+use App\Http\Requests\StoreCategoryRequest;
+use OpenApi\Attributes as OA;
 
 /**
  * @group Categories
@@ -15,13 +16,16 @@ use App\Http\Requests\StoreCategoryRequest; // yeni import
  */
 class CategoryController extends Controller
 {
-    /**
-     * Get Categories
-     *
-     * Getting the list of the categories
-     *
-     * @queryParam page Which page to show. Example: 2
-     */
+    #[OA\Get(
+        path: '/categories',
+        tags: ['Categories'],
+        summary: 'Get list of categories',
+        responses: [
+            new OA\Response(response: 200, description: 'Successful operation'),
+            new OA\Response(response: 401, description: 'Unauthenticated'),
+            new OA\Response(response: 403, description: 'Forbidden'),
+        ]
+    )]
     public function index()
     {
         // Tüm kategoriler, description kısaltılmış (limit(20))
