@@ -28,8 +28,11 @@ class CategoryController extends Controller
     )]
     public function index()
     {
-        // Tüm kategoriler, description kısaltılmış (limit(20))
-        return CategoryResource::collection(Category::all());
+        return CategoryResource::collection(
+            cache()->rememberForever('categories', function () {
+                return Category::all();
+            })
+        );
     }
 
     public function show(Category $category)
