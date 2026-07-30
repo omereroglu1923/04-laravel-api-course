@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V2; // V1 yerine V2
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
@@ -28,8 +28,8 @@ class CategoryController extends Controller
     )]
     public function index()
     {
-        // Tüm kategoriler, description kısaltılmış (limit(20))
-        return CategoryResource::collection(Category::all());
+        // v1'den farklı: sadece id'si 3'ten küçük kategorileri döndür (test amaçlı)
+        return CategoryResource::collection(Category::where('id', '<', 3)->get());
     }
 
     public function show(Category $category)
