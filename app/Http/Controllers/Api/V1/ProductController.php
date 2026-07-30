@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1; // Api\V1 olarak değişti
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use F9Web\ApiResponseHelpers;
 
-/**
- * @group Products
- *
- * Managing Products
- */
 class ProductController extends Controller
 {
+    use ApiResponseHelpers;
+
     public function index()
     {
-        $products = Product::with('category')->paginate(9); // get() yerine paginate()
-        return ProductResource::collection($products);
+        $products = Product::with('category')->paginate(9);
+
+        return ProductResource::collection($products); // respondWithSuccess kaldırıldı
     }
 }
