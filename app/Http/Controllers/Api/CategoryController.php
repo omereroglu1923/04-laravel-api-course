@@ -8,8 +8,20 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryRequest; // yeni import
 
+/**
+ * @group Categories
+ *
+ * Managing Categories
+ */
 class CategoryController extends Controller
 {
+    /**
+     * Get Categories
+     *
+     * Getting the list of the categories
+     *
+     * @queryParam page Which page to show. Example: 2
+     */
     public function index()
     {
         // Tüm kategoriler, description kısaltılmış (limit(20))
@@ -28,6 +40,11 @@ class CategoryController extends Controller
         return CategoryResource::collection(Category::all());
     }
 
+    /**
+     * POST categories
+     *
+     * @bodyParam name string required Name of the category. Example: Clothing
+     */
     public function store(StoreCategoryRequest $request)
     {
         $data = $request->validated();

@@ -1,0 +1,285 @@
+name: Categories
+description: |-
+
+  Managing Categories
+endpoints:
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: api/categories
+    metadata:
+      custom: []
+      groupName: Categories
+      groupDescription: |-
+
+        Managing Categories
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get Categories'
+      description: 'Getting the list of the categories'
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        custom: []
+        name: page
+        description: 'Which page to show.'
+        required: false
+        example: 2
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+    cleanQueryParameters:
+      page: 2
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":[{"id":1,"name":"G\u00fcncellenmi\u015f kategori","photo":null,"description":""},{"id":2,"name":"sit excepturi nulla","photo":null,"description":""},{"id":3,"name":"iste distinctio totam","photo":null,"description":""},{"id":5,"name":"illo nemo consequuntur","photo":null,"description":""},{"id":6,"name":"et quia et","photo":null,"description":""},{"id":7,"name":"consectetur sint nulla","photo":null,"description":""},{"id":8,"name":"consectetur harum explicabo","photo":null,"description":""},{"id":9,"name":"enim corporis consequatur","photo":null,"description":""},{"id":10,"name":"in autem eius","photo":null,"description":""},{"id":11,"name":"Yeni test kategori","photo":null,"description":""},{"id":13,"name":"\u00d6mer ERO\u011eLU","photo":null,"description":""},{"id":14,"name":"Yeni Foto ekleme","photo":"categories\/RCQoIG7GZkpFwzn4vV59bBdbOE4fYGu24z8qxWyy.jpg","description":""},{"id":15,"name":"siyah beyaz","photo":"categories\/RZTT7nKZqmedbzd1UXByrVt1tdYsNOPjFoIKy08q.png","description":""}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/categories
+    metadata:
+      custom: []
+      groupName: Categories
+      groupDescription: |-
+
+        Managing Categories
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'POST categories'
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'Name of the category.'
+        required: true
+        example: Clothing
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        deprecated: false
+      photo:
+        custom: []
+        name: photo
+        description: 'Must be a file.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      name: Clothing
+    fileParameters:
+      photo: null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - GET
+    uri: 'api/categories/{id}'
+    metadata:
+      custom: []
+      groupName: Categories
+      groupDescription: |-
+
+        Managing Categories
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 200
+        content: '{"data":{"id":1,"name":"G\u00fcncellenmi\u015f kategori","photo":null,"description":null}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          vary: Origin
+        description: null
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/categories/{id}'
+    metadata:
+      custom: []
+      groupName: Categories
+      groupDescription: |-
+
+        Managing Categories
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      photo:
+        custom: []
+        name: photo
+        description: 'Must be a file.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        deprecated: false
+    cleanBodyParameters:
+      name: b
+    fileParameters:
+      photo: null
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+  -
+    custom: []
+    httpMethods:
+      - DELETE
+    uri: 'api/categories/{id}'
+    metadata:
+      custom: []
+      groupName: Categories
+      groupDescription: |-
+
+        Managing Categories
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      deprecated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        custom: []
+        name: id
+        description: 'The ID of the category.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
