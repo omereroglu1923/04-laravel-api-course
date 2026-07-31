@@ -13,15 +13,13 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'photo' => $this->photo, // yeni eklenen alan
-            'description' => $this->when($request->is('api/categories*'), function () use ($request) {
-                // Sadece liste görünümünde (tam olarak /api/categories) kısaltılmış göster
-                if ($request->is('api/categories')) {
+            'description' => $this->when($request->is('*categories*'), function () use ($request) {
+                if (str($request->path())->endsWith('categories')) {
                     return str($this->description)->limit(20);
                 }
-
-                // Tekil kayıt görünümünde (/api/categories/{id}) tam metni göster
                 return $this->description;
             }),
+
         ];
     }
 }
