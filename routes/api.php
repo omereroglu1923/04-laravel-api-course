@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AuthorController;
+use App\Http\Controllers\Api\V1\BookController;
 use App\Http\Controllers\Api\V1\CategoryController;
 use App\Http\Controllers\Api\V1\ProductController;
 use App\Http\Controllers\Api\Auth\LoginController;
@@ -21,6 +23,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('v1')->group(function () {
         Route::apiResource('categories', CategoryController::class);
         Route::get('products', [ProductController::class, 'index']);
+        Route::apiResource('authors', AuthorController::class);
+        Route::apiResource('books', BookController::class);
     });
 
     Orion::resource('tags', TagController::class);
