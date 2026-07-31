@@ -25,3 +25,11 @@ Route::prefix('v1')->group(function () { // sadece bu ikisi v1'e taşınıyor
 Orion::resource('tags', TagController::class);
 
 Orion::resource('orion-categories', OrionCategoryController::class);
+
+/*===========================
+=           brands           =
+=============================*/
+
+Route::apiResource('/brands', \App\Http\Controllers\API\BrandController::class);
+
+/*=====  End of brands   ======*/
