@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\V1\CategoryController; // V1 eklendi
-use App\Http\Controllers\Api\V1\ProductController;   // V1 eklendi
+use App\Http\Controllers\Api\V1\CategoryController;
+use App\Http\Controllers\Api\V1\ProductController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use Illuminate\Http\Request;
@@ -17,19 +17,21 @@ Route::get('/user', function (Request $request) {
 Route::post('register', RegisterController::class);
 Route::post('login', LoginController::class);
 
-Route::prefix('v1')->group(function () { // sadece bu ikisi v1'e taşınıyor
-    Route::apiResource('categories', CategoryController::class);
-    Route::get('products', [ProductController::class, 'index']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('v1')->group(function () {
+        Route::apiResource('categories', CategoryController::class);
+        Route::get('products', [ProductController::class, 'index']);
+    });
+
+    Orion::resource('tags', TagController::class);
+
+    Orion::resource('orion-categories', OrionCategoryController::class);
+
+    /*===========================
+    =           brands           =
+    =============================*/
+
+    Route::apiResource('/brands', \App\Http\Controllers\API\BrandController::class);
+
+    /*=====  End of brands   ======*/
 });
-
-Orion::resource('tags', TagController::class);
-
-Orion::resource('orion-categories', OrionCategoryController::class);
-
-/*===========================
-=           brands           =
-=============================*/
-
-Route::apiResource('/brands', \App\Http\Controllers\API\BrandController::class);
-
-/*=====  End of brands   ======*/

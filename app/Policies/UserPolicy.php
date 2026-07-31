@@ -14,9 +14,9 @@ class UserPolicy
         return true;
     }
 
-    public function show(User $user = null, User $model): bool
+    public function show(?User $user, User $model): bool
     {
-        return true;
+        return $user && $user->id === $model->id;
     }
 
     public function store(User $user): bool

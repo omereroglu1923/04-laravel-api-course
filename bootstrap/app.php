@@ -21,8 +21,9 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->group(base_path('routes/api_v2.php'));
         },
     )
-    ->withMiddleware(function (Middleware $middleware): void {
+    ->withMiddleware(function (Middleware $middleware) {
         $middleware->statefulApi();
+        $middleware->prepend(AlwaysAcceptJson::class); // eklendi
     })
     ->withExceptions(function (Exceptions $exceptions) {
         // yeni eklenen blok — 404 hatasını özelleştiriyoruz
